@@ -1,7 +1,9 @@
 import create from 'zustand'
+import { defaultLang, langs } from '../config/langConfig'
 import {
   THEME_VAR_NAME_IN_STORAGE,
   NAV_STATE_VAR_NAME_IN_STORAGE,
+  LANG_VAR_NAME_IN_STORAGE,
 } from '../config/localStorageVarNames'
 import { themes } from '../config/materialUiConfig'
 import {
@@ -34,5 +36,17 @@ export const useNavStateStore = create((set) => ({
         isOpen: newIsOpen,
       }
     })
+  },
+}))
+
+export const useLangStore = create((set) => ({
+  currentLang: getFromLocalStorage(LANG_VAR_NAME_IN_STORAGE) || defaultLang,
+  allLangs: langs,
+  changeLang: (newLang) => {
+    saveToLocalStorage(LANG_VAR_NAME_IN_STORAGE, newLang)
+    set((state) => ({
+      ...state,
+      currentLang: newLang,
+    }))
   },
 }))

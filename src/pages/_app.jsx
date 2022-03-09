@@ -2,9 +2,11 @@ import React from 'react'
 import '../../styles/globals.css'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@emotion/react'
+import { appWithTranslation } from 'next-i18next'
 import materialUiConfig from '../config/materialUiConfig'
 import NoSsr from '../components/global/NoSsr'
 import { useThemeStore } from '../store/preferredParamsStore'
+import DefaultLayout from '../layouts/Default'
 
 function Novy({ Component, pageProps }) {
   const { theme } = useThemeStore()
@@ -13,7 +15,9 @@ function Novy({ Component, pageProps }) {
   return (
     <NoSsr>
       <ThemeProvider theme={materialUiConfig(theme)}>
-        <Component {...pageProps} />
+        <DefaultLayout>
+          <Component {...pageProps} />
+        </DefaultLayout>
       </ThemeProvider>
     </NoSsr>
   )
@@ -24,4 +28,4 @@ Novy.propTypes = {
   pageProps: PropTypes.oneOfType([PropTypes.object]).isRequired,
 }
 
-export default Novy
+export default appWithTranslation(Novy)

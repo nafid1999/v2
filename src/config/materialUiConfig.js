@@ -12,6 +12,10 @@ const materialUiConfig = (mode) =>
             // palette values for light mode
             primary: amber,
             divider: amber[200],
+            background: {
+              default: 'white',
+              paper: deepOrange[900],
+            },
             text: {
               primary: grey[900],
               secondary: grey[800],
@@ -22,7 +26,7 @@ const materialUiConfig = (mode) =>
             primary: deepOrange,
             divider: deepOrange[700],
             background: {
-              default: deepOrange[900],
+              default: 'black',
               paper: deepOrange[900],
             },
             text: {
