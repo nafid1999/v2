@@ -1,9 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { Button } from '@mui/material'
 import styles from '../../styles/Home.module.css'
+import { useThemeStore } from '../store/preferredParamsStore'
 
 export default function Home() {
+  const { toggleTheme } = useThemeStore()
   return (
     <div className={styles.container}>
       <Head>
@@ -20,6 +23,9 @@ export default function Home() {
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
+          <Button onClick={toggleTheme} sx={{ color: 'primary' }}>
+            toggle theme
+          </Button>
         </p>
 
         <div className={styles.grid}>

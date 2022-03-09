@@ -1,11 +1,22 @@
 import React from 'react'
 import '../../styles/globals.css'
 import PropTypes from 'prop-types'
-import dynamic from 'next/dynamic'
+import { ThemeProvider } from '@emotion/react'
+import materialUiConfig from '../config/materialUiConfig'
+import NoSsr from '../components/global/NoSsr'
+import { useThemeStore } from '../store/preferredParamsStore'
 
 function Novy({ Component, pageProps }) {
+  const { theme } = useThemeStore()
+
   /* eslint-disable react/jsx-props-no-spreading */
-  return <Component {...pageProps} />
+  return (
+    <NoSsr>
+      <ThemeProvider theme={materialUiConfig(theme)}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </NoSsr>
+  )
 }
 
 Novy.propTypes = {
@@ -13,6 +24,4 @@ Novy.propTypes = {
   pageProps: PropTypes.oneOfType([PropTypes.object]).isRequired,
 }
 
-export default dynamic(() => Promise.resolve(Novy), {
-  ssr: false,
-})
+export default Novy

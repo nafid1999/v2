@@ -1,14 +1,20 @@
 import create from 'zustand'
-
-const themes = ['light', 'dark']
-const THEME_VAR_NAME_IN_STORAGE = 'theme'
+import {
+  THEME_VAR_NAME_IN_STORAGE,
+  NAV_STATE_VAR_NAME_IN_STORAGE,
+} from '../config/localStorageVarNames'
+import { themes } from '../config/materialUiConfig'
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from '../utils/localStorageUtils'
 
 export const useThemeStore = create((set) => ({
-  theme: localStorage.getItem(THEME_VAR_NAME_IN_STORAGE) || themes[0],
+  theme: getFromLocalStorage(THEME_VAR_NAME_IN_STORAGE) || themes[0],
   toggleTheme: () => {
     set((state) => {
       const newTheme = state.theme === themes[0] ? themes[1] : themes[0]
-      localStorage.setItem(THEME_VAR_NAME_IN_STORAGE, newTheme)
+      saveToLocalStorage(THEME_VAR_NAME_IN_STORAGE, newTheme)
       return {
         ...state,
         theme: newTheme,
@@ -17,15 +23,12 @@ export const useThemeStore = create((set) => ({
   },
 }))
 
-const NAV_STATE_VAR_NAME_IN_STORAGE = 'navState'
-
 export const useNavStateStore = create((set) => ({
-  isOpen:
-    localStorage.getItem(NAV_STATE_VAR_NAME_IN_STORAGE) === 'true' || true,
+  isOpen: getFromLocalStorage(NAV_STATE_VAR_NAME_IN_STORAGE) === 'true' || true,
   toggleNavState: () => {
     set((state) => {
       const newIsOpen = !state.isOpen
-      localStorage.setItem(NAV_STATE_VAR_NAME_IN_STORAGE, newIsOpen)
+      saveToLocalStorage(NAV_STATE_VAR_NAME_IN_STORAGE, newIsOpen)
       return {
         ...state,
         isOpen: newIsOpen,
@@ -33,5 +36,3 @@ export const useNavStateStore = create((set) => ({
     })
   },
 }))
-
-export default useThemeStore
