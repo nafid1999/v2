@@ -3,7 +3,7 @@ import '../../styles/globals.css'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@emotion/react'
 import { appWithTranslation } from 'next-i18next'
-import materialUiConfig from '../config/materialUiConfig'
+import { darkTheme, lightTheme } from '../config/MUITheme'
 import NoSsr from '../components/global/NoSsr'
 import { useThemeStore } from '../store/preferredParamsStore'
 import DefaultLayout from '../layouts/Default'
@@ -14,7 +14,9 @@ function Novy({ Component, pageProps }) {
   /* eslint-disable react/jsx-props-no-spreading */
   return (
     <NoSsr>
-      <ThemeProvider theme={materialUiConfig(theme)}>
+      <ThemeProvider
+        theme={darkTheme.palette.mode === theme ? darkTheme : lightTheme}
+      >
         <DefaultLayout>
           <Component {...pageProps} />
         </DefaultLayout>

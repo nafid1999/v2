@@ -1,4 +1,4 @@
-export const inServer = typeof window === 'undefined'
+const inServer = typeof window === 'undefined'
 
 export const getFromLocalStorage = (key) => {
   if (!inServer) return localStorage.getItem(key)

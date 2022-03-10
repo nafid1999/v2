@@ -5,7 +5,7 @@ import {
   NAV_STATE_VAR_NAME_IN_STORAGE,
   LANG_VAR_NAME_IN_STORAGE,
 } from '../config/localStorageVarNames'
-import { themes } from '../config/materialUiConfig'
+import { themes } from '../config/MUITheme'
 import {
   getFromLocalStorage,
   saveToLocalStorage,

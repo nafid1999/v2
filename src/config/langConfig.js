@@ -1,4 +1,4 @@
-const langs = ['fr', 'en']
+const langs = ['fr']
 const defaultLang = langs[0]
 
 module.exports = {

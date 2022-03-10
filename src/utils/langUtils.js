@@ -6,8 +6,16 @@ const fs = require('fs')
 const path = require('path')
 
 export const setUpLangPages = async (locale) => {
-  const files = fs.readdirSync('public/locales/fr')
-  Array.prototype.push.apply(files, fs.readdirSync('public/locales/en'))
+  const localesPath = 'public/locales'
+  const folders = fs.readdirSync(localesPath)
+  const files = []
+
+  folders.forEach((folder) => {
+    Array.prototype.push.apply(
+      files,
+      fs.readdirSync(`${localesPath}/${folder}`),
+    )
+  })
 
   return {
     props: {

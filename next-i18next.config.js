@@ -5,6 +5,7 @@ module.exports = {
     defaultLocale: defaultLang,
     locales: langs,
     localeDetection: false,
+    domains: [],
   },
   trailingSlash: true,
 }
