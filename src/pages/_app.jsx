@@ -1,27 +1,22 @@
 import React from 'react'
-import '../../styles/globals.css'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@emotion/react'
 import { appWithTranslation } from 'next-i18next'
-import { darkTheme, lightTheme } from '../config/MUITheme'
-import NoSsr from '../components/global/NoSsr'
-import { useThemeStore } from '../store/preferredParamsStore'
-import DefaultLayout from '../layouts/Default'
+import getMUITheme from '../config/MUITheme'
+import useUserPreferencesStore from '../store/userPreferences'
+import Container from '../layouts'
+import '../../styles/globals.css'
 
 function Novy({ Component, pageProps }) {
-  const { theme } = useThemeStore()
+  const { theme } = useUserPreferencesStore()
 
   /* eslint-disable react/jsx-props-no-spreading */
   return (
-    <NoSsr>
-      <ThemeProvider
-        theme={darkTheme.palette.mode === theme ? darkTheme : lightTheme}
-      >
-        <DefaultLayout>
-          <Component {...pageProps} />
-        </DefaultLayout>
-      </ThemeProvider>
-    </NoSsr>
+    <ThemeProvider theme={getMUITheme(theme)}>
+      <Container>
+        <Component {...pageProps} />
+      </Container>
+    </ThemeProvider>
   )
 }
 

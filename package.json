@@ -22,7 +22,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "^17.0.2",
-    "zustand": "^3.7.1"
+    "zustand": "^3.7.1",
+    "zustand-persist": "^0.4.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -38,9 +39,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.0",
     "jest": "^27.5.1",
-    "prettier": "^2.5.1",
-    "husky": "^7.0.0"
+    "prettier": "^2.5.1"
   },
   "engines": {
     "node": ">= 14.17.6"
