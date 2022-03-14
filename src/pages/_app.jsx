@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from '@emotion/react'
 import { appWithTranslation } from 'next-i18next'
 import { QueryClientProvider } from 'react-query'
-import { ToastContainer, Zoom, Bounce } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 import getMUITheme from '../config/MUITheme'
 import useUserPreferencesStore from '../store/userPreferences'

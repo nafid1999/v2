@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next'
 import { Container, Typography } from '@mui/material'
 import styles from '../../styles/Home.module.css'
 import { setUpLangPages } from '../utils/langUtils'
-import toast from '../components/global/toast'
 
 export default function Home() {
   const { t } = useTranslation('home')
