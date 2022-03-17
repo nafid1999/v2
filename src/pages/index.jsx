@@ -4,14 +4,17 @@ import { useTranslation } from 'next-i18next'
 import { Container, Typography } from '@mui/material'
 import styles from '../../styles/Home.module.css'
 import { setUpLangPages } from '../utils/langUtils'
+import { useCurrentUser } from '../backend'
 
 export default function Home() {
   const { t } = useTranslation('home')
+  const { data = {} } = useCurrentUser()
+
   return (
     <Container>
       <main className={styles.main}>
         <Typography variant="h1" color="primary">
-          {t('welcome-title')}
+          {t('welcome-title')} {data.firstName} {data.lastName}
         </Typography>
 
         <div className={styles.grid}>

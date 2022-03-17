@@ -4,9 +4,12 @@ import { ThemeProvider } from '@emotion/react'
 import { appWithTranslation } from 'next-i18next'
 import { QueryClientProvider } from 'react-query'
 import { ToastContainer } from 'react-toastify'
-import { SSRKeycloakProvider, SSRCookies } from '@react-keycloak/ssr'
+import {
+  SSRKeycloakProvider,
+  SSRCookies,
+  useKeycloak,
+} from '@react-keycloak/ssr'
 import cookie from 'cookie'
-
 import getMUITheme from '../config/MUITheme'
 import useUserPreferencesStore from '../store/userPreferences'
 import Container from '../layouts'
@@ -28,8 +31,31 @@ const initOptions = {
   responseMode: 'query',
 }
 
-function Novy({ Component, pageProps, cookies }) {
+function Main({ Component, pageProps }) {
   const { theme } = useUserPreferencesStore()
+  const { keycloak } = useKeycloak()
+  return (
+    <ThemeProvider theme={getMUITheme(theme)}>
+      <Container>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        {keycloak?.authenticated ? <Component {...pageProps} /> : null}
+      </Container>
+      <ToastContainer
+        position="top-right"
+        autoClose={6000}
+        newestOnTop={false}
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+      />
+    </ThemeProvider>
+  )
+}
+Main.propTypes = {
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.oneOfType([PropTypes.object]).isRequired,
+}
+function Novy({ Component, pageProps, cookies }) {
   const queryClient = useQueryClient()
 
   return (
@@ -39,20 +65,7 @@ function Novy({ Component, pageProps, cookies }) {
       initOptions={initOptions}
     >
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={getMUITheme(theme)}>
-          <Container>
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-            <Component {...pageProps} />
-          </Container>
-          <ToastContainer
-            position="top-right"
-            autoClose={6000}
-            newestOnTop={false}
-            rtl={false}
-            pauseOnFocusLoss
-            pauseOnHover
-          />
-        </ThemeProvider>
+        <Main pageProps={pageProps} Component={Component} />
       </QueryClientProvider>
     </SSRKeycloakProvider>
   )
