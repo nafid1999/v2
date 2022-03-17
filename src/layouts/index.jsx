@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
-import CustomAppBar from './AppBar'
 import LeftMenu from './LeftMenu'
+import CustomAppBar from './AppBar'
 import useUserPreferencesStore from '../store/userPreferences'
 
 export default function Container({ children }) {
