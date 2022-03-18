@@ -15,6 +15,7 @@ import { styled } from '@mui/material/styles'
 import MuiAppBar from '@mui/material/AppBar'
 import useUserPreferencesStore from '../../store/userPreferences'
 import UserMenu from '../UserMenu'
+import { useCurrentUser } from '../../backend'
 
 const drawerWidth = 240
 
@@ -46,6 +47,7 @@ export default function CustomAppBar() {
   const { navState } = useUserPreferencesStore()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const isMenuOpen = Boolean(anchorEl)
+  const { data = {} } = useCurrentUser()
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
@@ -62,24 +64,16 @@ export default function CustomAppBar() {
           <Grid container direction="column" xs="auto">
             <Grid item>
               <Typography align="right" variant="button" component="div">
-                John Doe
+                {data.firstName} {data.lastName}
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="caption">Expert technique</Typography>
+              <Typography align="right" variant="caption" component="div">
+                Expert technique
+              </Typography>
             </Grid>
           </Grid>
-
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-controls="profil-account-menu"
-            aria-haspopup="true"
-            disableRipple
-          >
-            <AccountCircle sx={{ fontSize: 40 }} />
-          </IconButton>
+          <AccountCircle sx={{ fontSize: 40, ml: 1 }} />
           {isMenuOpen ? (
             <KeyboardArrowUp sx={{ fontSize: 20 }} />
           ) : (

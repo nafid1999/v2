@@ -1,13 +1,25 @@
 import React from 'react'
-import { Button, Menu, MenuItem } from '@mui/material'
+import {
+  Divider,
+  Grid,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Typography,
+} from '@mui/material'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
+import { AccountCircle, LockOpen, Logout } from '@mui/icons-material'
 import NightlightIcon from '@mui/icons-material/Nightlight'
 import useUserPreferencesStore from '../../store/userPreferences'
+import { useCurrentUser } from '../../backend'
 
 export default function UserMenu({ anchorEl, isMenuOpen, handleMenuClose }) {
   const { toggleTheme, theme } = useUserPreferencesStore()
+  const { data = {} } = useCurrentUser()
 
   return (
     <Menu
@@ -25,20 +37,49 @@ export default function UserMenu({ anchorEl, isMenuOpen, handleMenuClose }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        sx={{ pt: 1, pb: 1, minWidth: 300 }}
+      >
+        <Grid item xs="auto">
+          <AccountCircle sx={{ fontSize: 60 }} />
+        </Grid>
+        <Grid item xs="auto">
+          <Typography align="right" variant="button" component="div">
+            {data.firstName} {data.lastName}
+          </Typography>
+        </Grid>
+        <Grid item xs="auto">
+          <Typography align="right" variant="caption" component="div">
+            Expert Technique
+          </Typography>
+        </Grid>
+        <Grid item xs="auto">
+          <IconButton color="secondary" onClick={toggleTheme}>
+            {theme === 'light' ? <Brightness4Icon /> : <NightlightIcon />}
+          </IconButton>
+        </Grid>
+      </Grid>
+      <Divider sx={{ mb: 1, mt: 1 }} />
       <MenuItem>
-        <Link href="/Account">Account</Link>
+        <ListItemIcon>
+          <LockOpen fontSize="small" />
+        </ListItemIcon>
+        <ListItemText>
+          <Link href="/Account/ChangePassword">Change Password</Link>
+        </ListItemText>
       </MenuItem>
-      <MenuItem>
-        <Link href="/Account/ChangePassword">Change Password</Link>
-      </MenuItem>
+      <Divider />
 
       <MenuItem>
-        <Link href="/Logout">Log Out</Link>
-      </MenuItem>
-      <MenuItem>
-        <Button color="secondary" onClick={toggleTheme}>
-          {theme === 'light' ? <Brightness4Icon /> : <NightlightIcon />}
-        </Button>
+        <ListItemIcon>
+          <Logout fontSize="small" />
+        </ListItemIcon>
+        <ListItemText>
+          <Link href="/Logout">Log Out</Link>
+        </ListItemText>
       </MenuItem>
     </Menu>
   )
