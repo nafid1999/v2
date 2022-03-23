@@ -61,7 +61,7 @@ export default function CustomAppBar() {
     <AppBar position="fixed" open={navState} color="inherit" elevation={1}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
         <ButtonBase onClick={handleProfileMenuOpen}>
-          <Grid container direction="column" xs="auto">
+          <Grid container direction="column">
             <Grid item>
               <Typography align="right" variant="button" component="div">
                 {data.firstName} {data.lastName}
