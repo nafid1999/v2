@@ -9,13 +9,13 @@ const CardCollab = ({ user, bg, color, bl }) => {
   return (
     <Card
       elevation={0}
+      square
       sx={{
         minHeight: '96px',
         borderLeft: bl,
-        borderRadius: '0 !important',
       }}
     >
-      <Grid container sx={{ gap: '70px', flexWrap: 'nowrap', mt: 3 }}>
+      <Grid container sx={{ gap: '70px', flexWrap: 'nowrap' }}>
         <Grid item width="70px">
           <CardMedia
             component="img"
@@ -46,21 +46,17 @@ const CardCollab = ({ user, bg, color, bl }) => {
           </Stack>
         </Grid>
         <Grid item width="100px">
-          <Stack spacing={0}>
-            <CardActions>
-              <Chip
-                label={user.agencyLabel}
-                size="medium"
-                sx={{
-                  borderRadius: '8px',
-                  paddingLeft: '12px',
-                  paddingRight: '12px',
-                  background: bg,
-                  color: color,
-                }}
-              ></Chip>
-            </CardActions>
-          </Stack>
+          <Chip
+            label={user.agencyLabel}
+            size="medium"
+            sx={{
+              borderRadius: '8px',
+              paddingLeft: '12px',
+              paddingRight: '12px',
+              background: bg,
+              color: color,
+            }}
+          ></Chip>
         </Grid>
         <Grid item width="100px">
           <Stack direction="column" spacing={0}>
@@ -84,16 +80,14 @@ const CardCollab = ({ user, bg, color, bl }) => {
           </Stack>
         </Grid>
         <Grid item sx={{ ml: 'auto' }}>
-          <Stack alignItems="flex-end">
-            <CardActions>
-              <IconButton>
-                <EditIcon />
-              </IconButton>
-              <IconButton>
-                <DeleteForeverIcon color="error" />
-              </IconButton>
-            </CardActions>
-          </Stack>
+          <CardActions>
+            <IconButton>
+              <EditIcon />
+            </IconButton>
+            <IconButton>
+              <DeleteForeverIcon color="error" />
+            </IconButton>
+          </CardActions>
         </Grid>
       </Grid>
     </Card>
