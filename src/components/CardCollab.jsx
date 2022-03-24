@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography'
 import { CardMedia, Grid, IconButton, Stack } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-
 const CardCollab = ({ user, bg, color, bl }) => {
   return (
     <Card
