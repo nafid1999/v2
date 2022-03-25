@@ -1,11 +1,13 @@
 import React from 'react'
 import {
-  IconButton,
   Typography,
   Toolbar,
   Grid,
   ButtonBase,
+  IconButton,
+  Hidden,
 } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import {
   AccountCircle,
   KeyboardArrowDown,
@@ -23,12 +25,13 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(!open && {
-    width: `calc(100% - calc(${theme.spacing(7)} + 1px))`,
+    width: `100%`,
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - calc(${theme.spacing(9)} + 1px))`,
     },
@@ -44,7 +47,7 @@ const AppBar = styled(MuiAppBar, {
 }))
 
 export default function CustomAppBar() {
-  const { navState } = useUserPreferencesStore()
+  const { toggleNavState, navState } = useUserPreferencesStore()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const isMenuOpen = Boolean(anchorEl)
   const { data = {} } = useCurrentUser()
@@ -58,9 +61,26 @@ export default function CustomAppBar() {
   }
 
   return (
-    <AppBar position="fixed" open={navState} color="inherit" elevation={1}>
-      <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <ButtonBase onClick={handleProfileMenuOpen}>
+    <AppBar position="fixed" open={navState} color="inherit" elevation={0}>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Hidden smUp>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleNavState}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+
+        <ButtonBase onClick={handleProfileMenuOpen} sx={{ marginLeft: 'auto' }}>
           <Grid container direction="column">
             <Grid item>
               <Typography align="right" variant="button" component="div">
