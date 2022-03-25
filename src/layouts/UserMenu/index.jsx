@@ -20,7 +20,6 @@ import { useCurrentUser } from '../../backend'
 export default function UserMenu({ anchorEl, isMenuOpen, handleMenuClose }) {
   const { toggleTheme, theme } = useUserPreferencesStore()
   const { data = {} } = useCurrentUser()
-
   return (
     <Menu
       anchorEl={anchorEl}

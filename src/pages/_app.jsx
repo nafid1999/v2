@@ -14,7 +14,6 @@ import getMUITheme from '../config/MUITheme'
 import useUserPreferencesStore from '../store/userPreferences'
 import Container from '../layouts'
 import useQueryClient from '../config/ReactQuery/queryClient'
-
 import '../../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -85,8 +84,7 @@ Novy.getInitialProps = async (context) => ({
 Novy.propTypes = {
   Component: PropTypes.func.isRequired,
   pageProps: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  cookies: PropTypes.any.isRequired,
+  cookies: PropTypes.element.isRequired,
 }
 
 export default appWithTranslation(Novy)

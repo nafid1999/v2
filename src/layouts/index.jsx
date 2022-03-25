@@ -20,7 +20,7 @@ export default function Container({ children }) {
       <CssBaseline />
       <CustomAppBar />
       <LeftMenu />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, paddingTop: '90px' }}>
         {children}
       </Box>
     </Box>
