@@ -6,6 +6,8 @@ import {
   ButtonBase,
   IconButton,
   Hidden,
+  Tabs,
+  Tab,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
@@ -18,6 +20,8 @@ import MuiAppBar from '@mui/material/AppBar'
 import useUserPreferencesStore from '../../store/userPreferences'
 import UserMenu from '../UserMenu'
 import { useCurrentUser } from '../../backend'
+import modules from './modules'
+import { useTranslation } from 'next-i18next'
 
 const drawerWidth = 240
 
@@ -51,6 +55,7 @@ export default function CustomAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const isMenuOpen = Boolean(anchorEl)
   const { data = {} } = useCurrentUser()
+  const { t } = useTranslation('common')
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
@@ -59,7 +64,6 @@ export default function CustomAppBar() {
   const handleMenuClose = () => {
     setAnchorEl(null)
   }
-
   return (
     <AppBar position="fixed" open={navState} color="inherit" elevation={0}>
       <Toolbar
@@ -78,6 +82,19 @@ export default function CustomAppBar() {
           >
             <MenuIcon />
           </IconButton>
+        </Hidden>
+        <Hidden smDown>
+          <Tabs
+            value={0}
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="Module tabs"
+            sx={{ marginTop: 'auto' }}
+          >
+            {modules.map(({ name }, index) => (
+              <Tab label={t(name)} index={index} />
+            ))}
+          </Tabs>
         </Hidden>
 
         <ButtonBase onClick={handleProfileMenuOpen} sx={{ marginLeft: 'auto' }}>

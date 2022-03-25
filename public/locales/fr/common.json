@@ -1,3 +1,9 @@
 {
-  "key": "value fr"
+  "collaborators": "Collaborateurs",
+  "recruitment": "Recrutement",
+  "suppliers_clients": "Clients & Fournisseurs",
+  "crm": "CRM",
+  "pay": "Paie",
+  "administration": "Administration",
+  "pilotage": "Pilotage"
 }
