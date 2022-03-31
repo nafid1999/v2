@@ -54,7 +54,7 @@ function NonValideVacations() {
                       <ListItemText
                         primary={`${
                           moment(absence.end).diff(absence.start, 'days') + 1
-                        }jours`}
+                        } jours`}
                         primaryTypographyProps={{
                           variant: 'subtitle1',
                           color: 'primary',
@@ -62,7 +62,7 @@ function NonValideVacations() {
                         }}
                         secondary={`${moment(absence.start)
                           .format('DD/MM/YYYY')
-                          .toString()}au${moment(absence.end)
+                          .toString()} au ${moment(absence.end)
                           .format('DD/MM/YYYY')
                           .toString()}`}
                         secondaryTypographyProps={{
