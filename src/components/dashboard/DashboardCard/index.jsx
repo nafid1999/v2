@@ -13,26 +13,14 @@ function DashboardCard({ data, title, icon }) {
         <Stack direction="row" spacing={0} justifyContent="space-between">
           <Box>
             <Typography
-              component="span"
-              variant="h7"
-              sx={{
-                ml: '10px',
-                mt: '0',
-              }}
+              component="p"
+              variant="caption"
               color="text.secondary"
+              gutterBottom
             >
               {title}
             </Typography>
-            <Typography
-              variant="h4"
-              component="div"
-              sx={{
-                mt: '10px',
-                ml: '10px',
-              }}
-            >
-              {data}{' '}
-            </Typography>
+            <Typography variant="h4">{data} </Typography>
           </Box>
           <Box sx={{ height: '100%', marginTop: 'auto' }}>{icon}</Box>
         </Stack>
