@@ -12,6 +12,7 @@ import Link from 'next/link'
 import IconButton from '@mui/material/IconButton'
 import CardHeader from '@mui/material/CardHeader'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 
 function NonValideVacations() {
@@ -36,7 +37,7 @@ function NonValideVacations() {
           <Stack
             direction="column"
             divider={<Divider orientation="horisontal" flexItem />}
-            spacing={1}
+            spacing={0}
           >
             <Grid
               item
@@ -44,6 +45,7 @@ function NonValideVacations() {
                 mt: 2,
                 ml: 0,
                 paddingTop: '2px',
+                borderButtom: '1px solid gray',
                 paddingLeft: 0,
               }}
             >
@@ -54,24 +56,31 @@ function NonValideVacations() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Typography variant="h6" component="h4">
+                <Typography
+                  variant="h6"
+                  component="h4"
+                  sx={{
+                    ml: 0,
+                    diplay: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
                   Amine Nafid
                 </Typography>
 
                 <Stack direction="column">
                   <Typography
                     variant="subtitle1"
-                    component="h4"
+                    component="div"
                     color="primary"
                     sx={{ textAlign: 'center' }}
                   >
                     5 jours
                   </Typography>
                   <Typography
-                    variant="subtitle2"
-                    component="h4"
+                    variant="subtitle1"
+                    component="div"
                     color="secondary"
-                    sx={{ fontSize: 14 }}
                   >
                     du 01/02/2022 au 01/02/2022
                   </Typography>
@@ -87,6 +96,7 @@ function NonValideVacations() {
                 mt: 2,
                 ml: 0,
                 paddingTop: '2px',
+                borderButtom: '1px solid gray',
                 paddingLeft: 0,
               }}
             >
@@ -97,67 +107,31 @@ function NonValideVacations() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Typography variant="h6" component="h4">
+                <Typography
+                  variant="h6"
+                  component="h7"
+                  sx={{
+                    ml: 0,
+                    diplay: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
                   Amine Nafid
                 </Typography>
 
                 <Stack direction="column">
                   <Typography
                     variant="subtitle1"
-                    component="h4"
+                    component="div"
                     color="primary"
                     sx={{ textAlign: 'center' }}
                   >
                     5 jours
                   </Typography>
-                  <Typography
-                    variant="subtitle2"
-                    component="h4"
-                    color="secondary"
-                    sx={{ fontSize: 14 }}
-                  >
-                    du 01/02/2022 au 01/02/2022
-                  </Typography>
-                </Stack>
-                <Typography variant="h6" component="h4">
-                  <DoneIcon color="success" />
-                </Typography>
-              </Container>
-            </Grid>
-            <Grid
-              item
-              sx={{
-                mt: 2,
-                ml: 0,
-                paddingTop: '2px',
-                paddingLeft: 0,
-              }}
-            >
-              <Container
-                maxWidth
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Typography variant="h6" component="h4">
-                  Amine Nafid
-                </Typography>
-
-                <Stack direction="column">
                   <Typography
                     variant="subtitle1"
-                    component="h4"
-                    color="primary"
-                    sx={{ textAlign: 'center' }}
-                  >
-                    5 jours
-                  </Typography>
-                  <Typography
-                    variant="subtitle2"
-                    component="h4"
+                    component="div"
                     color="secondary"
-                    sx={{ fontSize: 14 }}
                   >
                     du 01/02/2022 au 01/02/2022
                   </Typography>
@@ -171,9 +145,9 @@ function NonValideVacations() {
         </List>
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Typography variant="span" component="div" color="primary" padding={2}>
+        <Button variant="text">
           <Link href="/">Gérer demande</Link>
-        </Typography>
+        </Button>
       </CardActions>
     </Card>
   )

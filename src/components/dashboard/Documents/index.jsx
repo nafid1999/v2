@@ -4,6 +4,7 @@ import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
@@ -13,6 +14,7 @@ import Link from 'next/link'
 import IconButton from '@mui/material/IconButton'
 import CardHeader from '@mui/material/CardHeader'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 
 const Documents = function () {
@@ -28,67 +30,74 @@ const Documents = function () {
         component="div"
       />
       <CardContent sx={{ padding: '0' }}>
-        <Stack
-          direction="column"
-          divider={<Divider orientation="horisontal" flexItem />}
-          spacing={1}
+        <List
+          dense
+          sx={{
+            width: '100%',
+          }}
         >
-          {/* eslint-disable-next-line no-unused-vars */}
-          {[1, 2, 3].map((_) => (
-            <Grid item sx={{ mt: 2, paddingLeft: 0 }}>
-              <Container
-                maxWidth
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  component="h4"
-                  sx={{ display: 'flex', alignSelf: 'center' }}
+          <Stack
+            direction="column"
+            divider={<Divider orientation="horisontal" flexItem />}
+            spacing={1}
+          >
+            {/* eslint-disable-next-line no-unused-vars */}
+            {[1, 2, 3].map((_) => (
+              <Grid item sx={{ mt: 2, paddingLeft: 0 }}>
+                <Container
+                  maxWidth
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
                 >
-                  CV archtect FrontEnd
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  component="h4"
-                  sx={{ display: 'flex', alignSelf: 'center' }}
-                >
-                  PDF
-                </Typography>
-                <Typography variant="h6" component="h4">
-                  <ButtonGroup
+                  <Typography
+                    variant="h6"
+                    component="h7"
                     sx={{
                       display: 'flex',
-                      justifyContent: 'space-between',
-                      cursor: ' pointer ',
-                      padding: ' 0px ',
+                      alignSelf: 'center',
                     }}
                   >
-                    <IconButton padding={0}>
-                      <AutorenewIcon color="primary" />
-                    </IconButton>
-                    <IconButton padding={0}>
-                      <FileDownloadIcon />
-                    </IconButton>
-                  </ButtonGroup>
-                </Typography>
-              </Container>
-            </Grid>
-          ))}
-        </Stack>
+                    CV archtect FrontEnd
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    component="h4"
+                    sx={{
+                      display: 'flex',
+                      alignSelf: 'center',
+                    }}
+                  >
+                    PDF
+                  </Typography>
+                  <Typography variant="h6" component="h4">
+                    <ButtonGroup
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        cursor: ' pointer ',
+                        padding: ' 0px ',
+                      }}
+                    >
+                      <IconButton padding={0}>
+                        <AutorenewIcon color="primary" />
+                      </IconButton>
+                      <IconButton padding={0}>
+                        <FileDownloadIcon />
+                      </IconButton>
+                    </ButtonGroup>
+                  </Typography>
+                </Container>
+              </Grid>
+            ))}
+          </Stack>
+        </List>
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Typography
-          variant="div"
-          component="div"
-          color="primary"
-          padding={2}
-          paddingRight={4}
-        >
+        <Button variant="text">
           <Link href="/">Ajouter un document</Link>
-        </Typography>
+        </Button>
       </CardActions>
     </Card>
   )

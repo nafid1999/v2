@@ -17,11 +17,11 @@ import {
 } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import MuiAppBar from '@mui/material/AppBar'
+import { useTranslation } from 'next-i18next'
 import useUserPreferencesStore from '../../store/userPreferences'
 import UserMenu from '../UserMenu'
 import { useCurrentUser } from '../../backend'
 import modules from './modules'
-import { useTranslation } from 'next-i18next'
 
 const drawerWidth = 240
 
