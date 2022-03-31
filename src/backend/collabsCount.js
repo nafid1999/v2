@@ -4,11 +4,10 @@ import axios from '../config/axios'
 const prefixUrl = '/collaboratorjava/api/'
 
 // eslint-disable-next-line import/prefer-default-export
-export const useListAbsences = (page = 0) => {
-  const { data } = useQuery('absneces', () =>
+export const useCollabsCount = () => {
+  const { data } = useQuery('collabCount', () =>
     axios({
-      url: `${prefixUrl}absences-activities`,
-      params: { size: 3, page },
+      url: `${prefixUrl}collaborators/count`,
     }).then((res) => res.data),
   )
   return { data }

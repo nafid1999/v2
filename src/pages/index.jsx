@@ -4,10 +4,8 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import GroupIcon from '@mui/icons-material/Group'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
-import WhatshotIcon from '@mui/icons-material/Whatshot'
 import Stack from '@mui/material/Stack'
 import CardHeader from '@mui/material/CardHeader'
 import PropTypes from 'prop-types'
@@ -16,34 +14,7 @@ import DelayedImputations from '../components/dashboard/DelayedImputations'
 import NonValideVacations from '../components/dashboard/NonValideVacations'
 import CollabSatisfactions from '../components/dashboard/CollabSatisfactions'
 import { setUpLangPages } from '../utils/langUtils'
-import DashboardCard from '../components/dashboard/DashboardCard'
-
-const dataDashboard = [
-  {
-    title: 'Collaborateurs',
-    data: '100',
-    icon: (
-      <GroupIcon fontSize="large" sx={{ fontSize: 60, color: '#c0c0c0' }} />
-    ),
-  },
-  {
-    title: 'Prochain congé',
-    data: '01/20/2022',
-    icon: (
-      <FlightTakeoffIcon
-        fontSize="large"
-        sx={{ fontSize: 60, color: '#87CEFA' }}
-      />
-    ),
-  },
-  {
-    title: 'Solde de Congé',
-    data: '12',
-    icon: (
-      <WhatshotIcon fontSize="large" sx={{ fontSize: 60, color: '#c0c0c0' }} />
-    ),
-  },
-]
+import DashboardCards from '../components/dashboard/DashboardCards'
 
 function RightSideContainer({ children }) {
   return (
@@ -125,11 +96,7 @@ export default function Dashboard() {
             </Box>
           </Grid>
           {/* eslint-disable-next-line */}
-        {dataDashboard.map(({ icon, title, data }, id) => (
-            <Grid padding={0} item md={3} sm={6.5} xs={13}>
-              <DashboardCard data={data} title={title} icon={icon} />
-            </Grid>
-          ))}
+          <DashboardCards />
         </Grid>
       </Container>
       {/* cards */}
