@@ -8,30 +8,27 @@ import PropTypes from 'prop-types'
 
 function DashboardCard({ data, title, icon }) {
   return (
-    <Card sx={{ width: '100%' }}>
+    <Card elevation={0}>
       <CardContent sx={{ paddingTop: '9px', marginRight: '2%' }}>
         <Stack direction="row" spacing={0} justifyContent="space-between">
-          <Box sx={{ position: 'relative' }}>
+          <Box>
             <Typography
-              component="h1"
-              variant="subtitle1"
+              component="span"
+              variant="h7"
               sx={{
                 ml: '10px',
                 mt: '0',
-                fontWeight: '500',
               }}
               color="text.secondary"
             >
               {title}
             </Typography>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
               sx={{
                 mt: '10px',
                 ml: '10px',
-                fontWeight: 'bold',
-                color: 'black',
               }}
             >
               {data}{' '}

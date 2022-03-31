@@ -2,7 +2,6 @@ import React from 'react'
 import Container from '@mui/material/Container'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
@@ -11,6 +10,7 @@ import CardHeader from '@mui/material/CardHeader'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import IconButton from '@mui/material/IconButton'
 import Grid from '@mui/material/Grid'
+import Chip from '@mui/material/Chip'
 
 function DelayedImputations() {
   return (
@@ -44,33 +44,21 @@ function DelayedImputations() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Typography variant="h6" component="h4">
+                <Typography variant="h6" component="h7">
                   Ilyass lazaar
                 </Typography>
                 <Typography variant="h6" component="h4">
-                  <Button
-                    disableRipple
-                    variant="outlined"
-                    color="primary"
-                    background="#1a237e"
+                  <Chip
+                    label="Oujda"
                     sx={{
+                      padding: '3px 15px 3px 15px',
                       borderRadius: '5px',
-                      border: 'none',
-                      width: '90px',
                       background: '#f8bbd0',
-                      padding: '3px 7px 3px 7px',
-                      color: '#ec407a',
-                      '&:hover': {
-                        color: '#1a237e',
-                        border: 'none',
-                      },
-                      cursor: 'context-menu',
+                      color: '#FF067E',
                     }}
-                  >
-                    Oujda
-                  </Button>
+                  />
                 </Typography>
-                <Typography variant="h7" component="h4">
+                <Typography variant="h6" component="h7">
                   78%
                 </Typography>
               </Container>
@@ -83,33 +71,21 @@ function DelayedImputations() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Typography variant="h6" component="h4" sx={{ ml: 0 }}>
+                <Typography variant="h6" component="h7">
                   Amine Nafid
                 </Typography>
                 <Typography variant="h6" component="h4">
-                  <Button
-                    disableRipple
-                    variant="outlined"
-                    color="primary"
-                    background="#1a237e"
+                  <Chip
+                    label="Oujda"
                     sx={{
+                      padding: '3px 15px 3px 15px',
                       borderRadius: '5px',
-                      border: 'none',
-                      width: '90px',
-                      background: '#bbdefb',
-                      padding: '3px 7px 3px 7px',
-                      color: '#1976d2',
-                      '&:hover': {
-                        color: '#1a237e',
-                        border: 'none',
-                      },
-                      cursor: 'context-menu',
+                      background: '#f8bbd0',
+                      color: '#FF067E',
                     }}
-                  >
-                    Oujda
-                  </Button>
+                  />
                 </Typography>
-                <Typography variant="h7" component="h4">
+                <Typography variant="h6" component="h7">
                   78%
                 </Typography>
               </Container>

@@ -22,11 +22,30 @@ export default (theme) =>
         fontSize: '23px',
         color: 'gray',
       },
+      body: {
+        fontSize: '20px',
+      },
+      subtitle1: {
+        fontSize: '14px',
+        fontWeight: 'bold',
+      },
+      h6: {
+        fontSize: '1.1rem',
+        fontWeight: 'bold',
+      },
+      h4: {
+        fontSize: '26px',
+        fontWeight: 'bold',
+      },
+      h7: {
+        fontSize: '18px',
+        fontWeight: '500',
+      },
     },
     breakpoints: {
       values: {
         xs: 0,
-        sm: 600,
+        sm: 830,
         md: 1270,
         lg: 1200,
         xl: 1536,

@@ -74,69 +74,70 @@ function RightSideItem({ children }) {
 export default function Dashboard() {
   return (
     <>
-      <Grid
-        container
-        spacing={2.5}
-        margin="10px auto"
-        columns={13}
-        justifyContent="space-around"
-      >
-        <Grid padding={0} item md={3.5} sm={6} xs={6}>
-          <Typography variant="h7" component="h2">
-            Mes Imputations
-          </Typography>
-          <Typography
-            component="div"
-            variant="div"
-            color="text.secondary"
-            sx={{
-              marginTop: '7px',
-              fontWeight: '500',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            vous n avez pas encore imputé aujourd hui
-          </Typography>
-          <Typography
-            variant="h7"
-            component="h2"
-            color="primary"
-            sx={{ fontSize: '23px' }}
-          >
-            <Stack
-              direction="row"
-              spacing={1}
-              sx={{ overflow: 'hidden', marginTop: '10px' }}
-            >
-              <Box>
-                <AddCircleIcon sx={{ fontSize: 27 }} />
-              </Box>
-              <Box
+      <Container maxWidth sx={{ mt: 5, padding: 0 }}>
+        <Grid
+          container
+          spacing={{ sm: 3, md: 1.5, xs: 2 }}
+          columns={13}
+          justifyContent="space-between"
+        >
+          <Grid padding={0} item md={3.5} sm={6.5} xs={13}>
+            <Box>
+              <Typography variant="h4" component="h1">
+                Mes Imputations
+              </Typography>
+              <Typography
+                component="h7"
+                variant="subtitle1"
+                color="text.secondary"
                 sx={{
-                  padding: '0',
-                  fontSize: '20px',
+                  marginTop: '7px',
                   whiteSpace: 'nowrap',
-                  cursor: 'pointer',
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden',
                 }}
               >
-                Completer mes imputations
-              </Box>
-            </Stack>
-          </Typography>
-        </Grid>
-        {/* eslint-disable-next-line */}
-        {dataDashboard.map(({ icon, title, data }, id) => (
-          <Grid padding={0} item md={3} sm={6} xs={6}>
-            <DashboardCard data={data} title={title} icon={icon} />
+                vous n avez pas encore imputé aujourd hui
+              </Typography>
+              <Typography variant="h7" component="h2" color="primary">
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{ overflow: 'hidden', marginTop: '10px' }}
+                >
+                  <Box>
+                    <AddCircleIcon sx={{ fontSize: 27 }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      padding: '0',
+                      fontSize: '20px',
+                      whiteSpace: 'nowrap',
+                      cursor: 'pointer',
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    Completer mes imputations
+                  </Box>
+                </Stack>
+              </Typography>
+            </Box>
           </Grid>
-        ))}
-      </Grid>
+          {/* eslint-disable-next-line */}
+        {dataDashboard.map(({ icon, title, data }, id) => (
+            <Grid padding={0} item md={3} sm={6.5} xs={13}>
+              <DashboardCard data={data} title={title} icon={icon} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
       {/* cards */}
       <Container maxWidth sx={{ mt: 10 }}>
         <Grid container spacing={2}>
-          <LeftSideContainer>
+          <RightSideContainer>
             <RightSideItem>
-              <Typography variant="h5" component="h4">
+              <Typography variant="h5" component="h3">
                 Noveliens Récents
               </Typography>
               <Box sx={{ mt: 5 }}>
@@ -158,8 +159,8 @@ export default function Dashboard() {
                 />
               </Card>
             </RightSideItem>
-          </LeftSideContainer>
-          <RightSideContainer>
+          </RightSideContainer>
+          <LeftSideContainer>
             {/* Delayed imputations */}
             <RightSideItem>
               <CollabSatisfactions />
@@ -173,7 +174,7 @@ export default function Dashboard() {
             <RightSideItem>
               <Documents />
             </RightSideItem>
-          </RightSideContainer>
+          </LeftSideContainer>
         </Grid>
       </Container>
     </>
