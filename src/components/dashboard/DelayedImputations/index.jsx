@@ -28,7 +28,7 @@ const data = [
 ]
 function DelayedImputations() {
   return (
-    <Card>
+    <Card elevation={0} square>
       <CardHeader
         action={
           <IconButton aria-label="settings">

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 function DashboardCard({ data, title, icon }) {
   return (
-    <Card elevation={0}>
+    <Card elevation={0} square>
       <CardContent sx={{ paddingTop: '9px', marginRight: '2%' }}>
         <Stack direction="row" spacing={0} justifyContent="space-between">
           <Box>

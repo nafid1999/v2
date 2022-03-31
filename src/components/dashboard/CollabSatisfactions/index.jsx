@@ -9,7 +9,7 @@ import LineChart from './LineChart'
 
 const CollabSatisfactions = function () {
   return (
-    <Card>
+    <Card elevation={0} square>
       <CardHeader
         action={
           <IconButton aria-label="settings">

@@ -13,7 +13,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@mui/material'
 
 function NonValideVacations() {
   return (
-    <Card>
+    <Card elevation={0} square>
       <CardHeader
         action={
           <IconButton aria-label="settings">
@@ -23,13 +23,8 @@ function NonValideVacations() {
         title="Demandes de congé non valides "
         component="div"
       />
-      <CardContent sx={{ padding: '0' }}>
-        <List
-          dense
-          sx={{
-            width: '100%',
-          }}
-        >
+      <CardContent>
+        <List>
           {[1, 2, 3].map(() => (
             <>
               <ListItem>
