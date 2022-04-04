@@ -13,7 +13,7 @@ const menu = [
   },
   {
     text: 'Mes imputations',
-    url: '/mes-imputations',
+    url: '/mesImputations',
     Icon: Article,
   },
   {

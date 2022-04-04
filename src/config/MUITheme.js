@@ -18,29 +18,6 @@ export default (theme) =>
       button: {
         textTransform: 'none',
       },
-      // h5: {
-      //   fontSize: '23px',
-      //   color: 'gray',
-      // },
-      // body: {
-      //   fontSize: '20px',
-      // },
-      // subtitle1: {
-      //   fontSize: '14px',
-      //   fontWeight: 'bold',
-      // },
-      // h6: {
-      //   fontSize: '1.1rem',
-      //   fontWeight: 'bold',
-      // },
-      // h4: {
-      //   fontSize: '26px',
-      //   fontWeight: 'bold',
-      // },
-      // h7: {
-      //   fontSize: '18px',
-      //   fontWeight: '500',
-      // },
     },
     breakpoints: {
       values: {
