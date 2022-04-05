@@ -10,9 +10,9 @@ import CardHeader from '@mui/material/CardHeader'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Button from '@mui/material/Button'
 import { ListItem, ListItemIcon, ListItemText } from '@mui/material'
-import moment from 'moment'
 import PermissionProvider from '../../permissions/PermissionProvider'
 import { useListAbsences } from '../../../backend/absencesAndActivities'
+import { formatDate, getNumOfVacationDays } from '../../../utils/dateUtils'
 
 const defaultPermission =
   'modulePermissions.collaborators.absences.manageAbsences'
@@ -22,7 +22,7 @@ function NonValideVacations() {
 
   return (
     <PermissionProvider permission={defaultPermission}>
-      <Card elevation={0} square>
+      <Card elevation={0} square sx={{ mt: 3 }}>
         <CardHeader
           action={
             <IconButton aria-label="settings">
@@ -40,45 +40,42 @@ function NonValideVacations() {
             }}
           >
             {(absences && absences.length) > 0 &&
-              absences
-                .filter((data, i) => i < 3)
-                .map((absence) => (
-                  <>
-                    <ListItem>
-                      <ListItemText
-                        primary={absence.collaborators[0].name}
-                        primaryTypographyProps={{ variant: 'subtitle1' }}
-                        sx={{ width: '15%' }}
-                      />
+              absences.slice(0, 3).map((absence) => (
+                <>
+                  <ListItem>
+                    <ListItemText
+                      primary={absence.collaborators[0].name}
+                      primaryTypographyProps={{ variant: 'subtitle1' }}
+                      sx={{ width: '15%' }}
+                    />
 
-                      <ListItemText
-                        primary={`${
-                          moment(absence.end).diff(absence.start, 'days') + 1
-                        } jours`}
-                        primaryTypographyProps={{
-                          variant: 'subtitle1',
-                          color: 'primary',
-                          align: 'center',
-                        }}
-                        secondary={`${moment(absence.start)
-                          .format('DD/MM/YYYY')
-                          .toString()} au ${moment(absence.end)
-                          .format('DD/MM/YYYY')
-                          .toString()}`}
-                        secondaryTypographyProps={{
-                          align: 'center',
-                          variant: 'body2',
-                        }}
-                      />
-                      <ListItemIcon>
-                        <Button variant="text" color="success">
-                          <Link href="/">Valider</Link>
-                        </Button>
-                      </ListItemIcon>
-                    </ListItem>
-                    <Divider />
-                  </>
-                ))}
+                    <ListItemText
+                      primary={`${getNumOfVacationDays(
+                        absence.start,
+                        absence.end,
+                      )} jours`}
+                      primaryTypographyProps={{
+                        variant: 'subtitle1',
+                        color: 'primary',
+                        align: 'center',
+                      }}
+                      secondary={`${formatDate(absence.start)} au ${formatDate(
+                        absence.end,
+                      )}`}
+                      secondaryTypographyProps={{
+                        align: 'center',
+                        variant: 'body2',
+                      }}
+                    />
+                    <ListItemIcon>
+                      <Button variant="text" color="success">
+                        <Link href="/">Valider</Link>
+                      </Button>
+                    </ListItemIcon>
+                  </ListItem>
+                  <Divider />
+                </>
+              ))}
           </List>
         </CardContent>
         <CardActions sx={{ justifyContent: 'flex-end' }}>

@@ -3,8 +3,8 @@ import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
 import WhatshotIcon from '@mui/icons-material/Whatshot'
 import GroupIcon from '@mui/icons-material/Group'
 
-export default function cardsData(collabCount) {
-  const dataDashboard = [
+export default function (collabCount) {
+  return [
     {
       title: 'Collaborateurs',
       data: collabCount,
@@ -33,5 +33,4 @@ export default function cardsData(collabCount) {
       ),
     },
   ]
-  return dataDashboard
 }

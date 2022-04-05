@@ -15,7 +15,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@mui/material'
 
 const Documents = function () {
   return (
-    <Card elevation={0} square>
+    <Card elevation={0} square sx={{ mt: 3 }}>
       <CardHeader
         action={
           <IconButton aria-label="settings">

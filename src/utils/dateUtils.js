@@ -43,3 +43,8 @@ export const businessDaysInMonth = (month) => {
 
   return count
 }
+
+export const formatDate = (date) =>
+  moment(date).format(defaultDateFormat).toString()
+export const getNumOfVacationDays = (startDate, endDate) =>
+  moment(endDate).diff(startDate, 'days') + 1
