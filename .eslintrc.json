@@ -1,49 +1,49 @@
-{
-  "env": {
-    "browser": true,
-    "es6": true,
-    "jest": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "next/core-web-vitals",
-    "airbnb",
-    "prettier",
-    "plugin:node/recommended"
-  ],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
-    "no-unused-vars": "warn",
-    "no-console": "warn",
-    "no-alert": "warn",
-    "func-names": "off",
-    "no-process-exit": "off",
-    "object-shorthand": "off",
-    "class-methods-use-this": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "node/no-missing-import": [
-      "error",
-      {
-        "allowModules": [],
-        "tryExtensions": [".js", ".json", ".jsx", ".cjs"]
-      }
-    ],
-    "node/no-unsupported-features/es-syntax": [
-      "error",
-      { "ignores": ["modules"] }
-    ]
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true
-    }
-  }
-}
+// {
+//   "env": {
+//     "browser": true,
+//     "es6": true,
+//     "jest": true
+//   },
+//   "extends": [
+//     "eslint:recommended",
+//     "next/core-web-vitals",
+//     "airbnb",
+//     "prettier",
+//     "plugin:node/recommended"
+//   ],
+//   "plugins": ["prettier"],
+//   "rules": {
+//     "prettier/prettier": [
+//       "error",
+//       {
+//         "endOfLine": "auto"
+//       }
+//     ],
+//     "no-unused-vars": "warn",
+//     "no-console": "warn",
+//     "no-alert": "warn",
+//     "func-names": "off",
+//     "no-process-exit": "off",
+//     "object-shorthand": "off",
+//     "class-methods-use-this": "off",
+//     "react-hooks/exhaustive-deps": "off",
+//     "node/no-missing-import": [
+//       "error",
+//       {
+//         "allowModules": [],
+//         "tryExtensions": [".js", ".json", ".jsx", ".cjs"]
+//       }
+//     ],
+//     "node/no-unsupported-features/es-syntax": [
+//       "error",
+//       { "ignores": ["modules"] }
+//     ]
+//   },
+//   "parserOptions": {
+//     "ecmaVersion": 6,
+//     "sourceType": "module",
+//     "ecmaFeatures": {
+//       "modules": true
+//     }
+//   }
+// }

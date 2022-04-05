@@ -11,18 +11,28 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import HomeIcon from '@mui/icons-material/Home'
 import WorkIcon from '@mui/icons-material/Work'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
-import { Grid3x3 } from '@mui/icons-material'
 import LocalPoliceIcon from '@mui/icons-material/LocalPolice'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
-import GroupsSharpIcon from '@mui/icons-material/GroupsSharp'
-import { useCurrentUser } from '../../backend'
 import EditSharpIcon from '@mui/icons-material/EditSharp'
 import IconButton from '@mui/material/IconButton'
 import SaveAsSharpIcon from '@mui/icons-material/SaveAsSharp'
 import ClearSharpIcon from '@mui/icons-material/ClearSharp'
 import TextField from '@mui/material/TextField'
-import { alpha, styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'
+import { useCurrentUser } from '../../backend'
+import TabContext from '@mui/lab/TabContext'
+import TabList from '@mui/lab/TabList'
+import TabPanel from '@mui/lab/TabPanel'
+import Tab from '@mui/material/Tab'
+import Input from '@mui/material/Input'
+import InputLabel from '@mui/material/InputLabel'
+import InputAdornment from '@mui/material/InputAdornment'
+import FormControl from '@mui/material/FormControl'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import CakeIcon from '@mui/icons-material/Cake'
+import { useProfileInfo } from '../../backend/userProfile'
+
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
     color: '#334E64',
@@ -32,12 +42,55 @@ const CssTextField = styled(TextField)({
   },
 })
 
-const EditableFieldInfo = ({ data, icon }) => {
+function FormEdit() {
+  return (
+    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+      <Stack direction="row" spacing={6}>
+        <Box sx={{ display: 'flex', alignItems: 'end' }}>
+          <EmailIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+          <TextField
+            disabled
+            id="email"
+            variant="standard"
+            value={'oamara@novelis.fr'}
+            size="small"
+          />
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'end' }}>
+          <CakeIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+          <TextField id="input-with-sx" variant="standard" size="small" />
+        </Box>
+      </Stack>
+      <Stack direction="row" spacing={6}>
+        <Box sx={{ display: 'flex', alignItems: 'end', marginTop: '15px' }}>
+          <PhoneIphoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+          <TextField
+            id="phone-number"
+            variant="standard"
+            size="small"
+            placeholder="ex : 06XXXXXXXX"
+          />
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'end' }}>
+          <HomeIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+          <TextField
+            id="adress"
+            variant="standard"
+            size="small"
+            value={'DOUAR TIJDIT DAR EL KEBDANI DRIOUCH '}
+          />
+        </Box>
+      </Stack>
+    </Box>
+  )
+}
+
+function EditableFieldInfo({ data, icon }) {
   const [editMode, seteditMode] = useState(false)
 
   if (!editMode) {
     return (
-      <Stack direction={'row'} spacing={2}>
+      <Stack direction="row" spacing={2}>
         <PhoneIphoneIcon color="primary" />
         <Typography variant="body1">{data}</Typography>
         <IconButton
@@ -58,7 +111,7 @@ const EditableFieldInfo = ({ data, icon }) => {
     )
   }
   return (
-    <Stack direction={'row'} spacing={2}>
+    <Stack direction="row" spacing={2}>
       <PhoneIphoneIcon sx={{ color: '#334E64', padding: 0 }} />
       <CssTextField
         id="phone-number"
@@ -79,9 +132,17 @@ const EditableFieldInfo = ({ data, icon }) => {
 }
 
 function Profile() {
-  const [editMode, seteditMode] = useState(false)
+  const [value, setValue] = React.useState('1')
+  const [editMode, seteditMode] = useState(true)
+
+  const { dataPr = {} } = useProfileInfo(38)
   const { isLoading, data = {} } = useCurrentUser()
-  console.log(data)
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
+  console.log('jjr', data)
+
+  console.log('fr', dataPr)
   if (isLoading) return <Box>Loading ...</Box>
   return (
     <>
@@ -91,7 +152,7 @@ function Profile() {
       </Typography>
       <Container maxWidth sx={{ mt: 6, color: '#334E64' }}>
         <Grid container spacing={2}>
-          <Grid item md={4} sx={{ backgroundColor: 'inherit' }}>
+          <Grid item md={5} sm={8} xs={12} sx={{ backgroundColor: 'inherit' }}>
             <Card width="100%">
               <CardContent>
                 <Box
@@ -131,50 +192,104 @@ function Profile() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item container direction={'column'} md={8}>
+          <Grid item container direction="column" md={7}>
             <Card>
               <CardContent>
-                <Box sx={{ padding: '5px 20px 10px 20px' }}>
-                  <Typography variant="h5" sx={{ color: '#334E64' }}>
-                    Personal Information - servicesss
-                  </Typography>
-                  <Grid container direction={'column'}>
-                    <Grid item sx={{ mt: 3 }}>
-                      <Stack direction={'row'} spacing={2}>
-                        <EmailIcon sx={{ color: '#334E64' }} />
-                        <Typography variant="body1" sx={{ color: '#334E64' }}>
-                          {data?.login}
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item sx={{ mt: 3 }}>
-                      <EditableFieldInfo data={data?.login} />
-                    </Grid>
-                    <Grid item sx={{ mt: 3 }}>
-                      <Stack direction={'row'} spacing={2}>
-                        <HomeIcon sx={{ color: '#334E64' }} />
-                        <Typography variant="body1" sx={{ color: '#334E64' }}>
-                          somthing here
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item sx={{ mt: 3 }}>
-                      <Stack direction={'row'} spacing={2}>
-                        <WorkIcon sx={{ color: '#334E64' }} />
-                        <Typography variant="body1" sx={{ color: '#334E64' }}>
-                          manager
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item sx={{ mt: 3 }}>
-                      <Stack direction={'row'} spacing={2}>
-                        <CalendarMonthIcon sx={{ color: '#334E64' }} />
-                        <Typography variant="body1" sx={{ color: '#334E64' }}>
-                          06/12/2022
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
+                <Box sx={{ width: '100%', typography: 'body1' }}>
+                  <TabContext value={value}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                      <TabList
+                        onChange={handleChange}
+                        aria-label="lab API tabs example"
+                      >
+                        <Tab label=" Personal Information" value="1" />
+                        <Tab label="Item Two" value="2" />
+                        <Tab label="Item Three" value="3" />
+                      </TabList>
+                    </Box>
+                    <TabPanel value="1">
+                      {editMode ? (
+                        <FormEdit />
+                      ) : (
+                        <Grid container direction="column">
+                          <Grid item sx={{ mt: 3 }}>
+                            <Stack direction="row" spacing={2}>
+                              <EmailIcon sx={{ color: '#334E64' }} />
+                              <Typography
+                                variant="body1"
+                                sx={{ color: '#334E64' }}
+                              >
+                                {data?.login}
+                              </Typography>
+                            </Stack>
+                          </Grid>
+                          <Grid item sx={{ mt: 3 }}>
+                            <EditableFieldInfo data={data?.login} />
+                          </Grid>
+                          <Grid item sx={{ mt: 3 }}>
+                            <Stack direction="row" spacing={2}>
+                              <HomeIcon sx={{ color: '#334E64' }} />
+                              <Typography
+                                variant="body1"
+                                sx={{ color: '#334E64' }}
+                              >
+                                somthing here
+                              </Typography>
+                            </Stack>
+                          </Grid>
+                          <Grid item sx={{ mt: 3 }}>
+                            <Stack direction="row" spacing={2}>
+                              <WorkIcon sx={{ color: '#334E64' }} />
+                              <Typography
+                                variant="body1"
+                                sx={{ color: '#334E64' }}
+                              >
+                                manager
+                              </Typography>
+                            </Stack>
+                          </Grid>
+                          <Grid item sx={{ mt: 3 }}>
+                            <Stack direction="row" spacing={2}>
+                              <CalendarMonthIcon sx={{ color: '#334E64' }} />
+                              <Typography
+                                variant="body1"
+                                sx={{ color: '#334E64' }}
+                              >
+                                06/12/2022
+                              </Typography>
+                            </Stack>
+                          </Grid>
+                        </Grid>
+                      )}
+                    </TabPanel>
+                    <TabPanel value="2">
+                      <FormEdit />
+                    </TabPanel>
+                    <TabPanel value="3">Item Three</TabPanel>
+                  </TabContext>
+                  {editMode ? (
+                    <Button
+                      sx={{ ml: 3 }}
+                      variant="outlined"
+                      disableElevation
+                      startIcon={<SaveAsSharpIcon />}
+                      size="small"
+                      onClick={() => seteditMode()}
+                    >
+                      Update Profile
+                    </Button>
+                  ) : (
+                    <Button
+                      sx={{ ml: 3 }}
+                      variant="outlined"
+                      disableElevation
+                      startIcon={<EditSharpIcon />}
+                      size="small"
+                      onClick={() => seteditMode(true)}
+                    >
+                      Edit Profile
+                    </Button>
+                  )}
                 </Box>
               </CardContent>
             </Card>
@@ -232,7 +347,7 @@ function Profile() {
                         variant="caption"
                         sx={{ marginBottom: '5px' }}
                       >
-                        Identifiant du collaborate
+                        Identifiant du collaborateur
                       </Typography>
                     </Box>
                   </Grid>
@@ -307,7 +422,7 @@ function Profile() {
                       <Typography
                         variant="caption"
                         sx={{ marginBottom: '5px' }}
-                      ></Typography>
+                      />
                     </Box>
                   </Grid>
                 </Grid>
