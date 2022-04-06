@@ -1,11 +1,8 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
-import CardHeader from '@mui/material/CardHeader'
 import PropTypes from 'prop-types'
 import Documents from '../components/dashboard/Documents'
 import DelayedImputations from '../components/dashboard/DelayedImputations'
@@ -63,7 +60,6 @@ export default function Dashboard() {
           </RightSideContainer>
           <LeftSideContainer>
             {/* Delayed imputations */}
-
             <CollabSatisfactions />
             <DelayedImputations />
             <NonValideVacations />
