@@ -73,54 +73,6 @@ function FormEdit() {
     </Box>
   )
 }
-
-// function EditableFieldInfo({ data, icon }) {
-//   const [editMode, seteditMode] = useState(false)
-
-//   if (!editMode) {
-//     return (
-//       <Stack direction="row" spacing={2}>
-//         <PhoneIphoneIcon color="primary" />
-//         <Typography variant="body1">{data}</Typography>
-//         <IconButton
-//           sx={{ position: 'relative', width: '27px', height: '27px' }}
-//           padding={0}
-//           onClick={() => seteditMode(true)}
-//         >
-//           <EditSharpIcon
-//             sx={{
-//               color: '#334E64',
-//               position: 'absolute',
-//               top: '2px',
-//               fontSize: '20px',
-//             }}
-//           />
-//         </IconButton>
-//       </Stack>
-//     )
-//   }
-//   return (
-//     <Stack direction="row" spacing={2}>
-//       <PhoneIphoneIcon sx={{ color: '#334E64', padding: 0 }} />
-//       <CssTextField
-//         id="phone-number"
-//         variant="standard"
-//         defaultValue="0657421844"
-//       />
-//       <Box>
-//         <IconButton padding={0}>
-//           {' '}
-//           <SaveAsSharpIcon sx={{ color: '#334E64' }} />
-//         </IconButton>
-//         <IconButton padding={0} onClick={() => seteditMode(false)}>
-//           <ClearSharpIcon sx={{ color: '#334E64' }} />
-//         </IconButton>
-//       </Box>
-//     </Stack>
-//   )
-// }
-
-// eslint-disable-next-line react/prop-types
 function DialogModal({ dataProfile }) {
   const [open, setOpen] = React.useState(false)
   const handleClickOpen = () => {
@@ -286,7 +238,7 @@ function Profile() {
       <Container maxWidth sx={{ mt: 6, color: '#334E64' }}>
         <Grid container spacing={2}>
           <Grid item md={5} sm={8} xs={12} sx={{ backgroundColor: 'inherit' }}>
-            <Card width="100%">
+            <Card width="100%" elevation={0}>
               <CardContent>
                 <Box
                   sx={{
@@ -327,7 +279,7 @@ function Profile() {
             </Card>
           </Grid>
           <Grid item container direction="column" md={7}>
-            <Card>
+            <Card elevation={0}>
               <CardContent>
                 <Box sx={{ width: '100%', typography: 'body1' }}>
                   <TabContext value={value}>
@@ -547,8 +499,54 @@ function Profile() {
     </>
   )
 }
-// DialogModal.propTypes = {
-//   dataProfile: PropTypes.oneOfType([PropTypes.object]).isRequired,
-// }
+DialogModal.propTypes = {
+  dataProfile: PropTypes.oneOfType([PropTypes.object]).isRequired,
+}
 
 export default Profile
+
+// function EditableFieldInfo({ data, icon }) {
+//   const [editMode, seteditMode] = useState(false)
+
+//   if (!editMode) {
+//     return (
+//       <Stack direction="row" spacing={2}>
+//         <PhoneIphoneIcon color="primary" />
+//         <Typography variant="body1">{data}</Typography>
+//         <IconButton
+//           sx={{ position: 'relative', width: '27px', height: '27px' }}
+//           padding={0}
+//           onClick={() => seteditMode(true)}
+//         >
+//           <EditSharpIcon
+//             sx={{
+//               color: '#334E64',
+//               position: 'absolute',
+//               top: '2px',
+//               fontSize: '20px',
+//             }}
+//           />
+//         </IconButton>
+//       </Stack>
+//     )
+//   }
+//   return (
+//     <Stack direction="row" spacing={2}>
+//       <PhoneIphoneIcon sx={{ color: '#334E64', padding: 0 }} />
+//       <CssTextField
+//         id="phone-number"
+//         variant="standard"
+//         defaultValue="0657421844"
+//       />
+//       <Box>
+//         <IconButton padding={0}>
+//           {' '}
+//           <SaveAsSharpIcon sx={{ color: '#334E64' }} />
+//         </IconButton>
+//         <IconButton padding={0} onClick={() => seteditMode(false)}>
+//           <ClearSharpIcon sx={{ color: '#334E64' }} />
+//         </IconButton>
+//       </Box>
+//     </Stack>
+//   )
+// }
