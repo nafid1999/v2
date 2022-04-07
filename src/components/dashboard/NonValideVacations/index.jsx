@@ -11,7 +11,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Button from '@mui/material/Button'
 import { ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import PermissionProvider from '../../permissions/PermissionProvider'
-import { useListAbsences } from '../../../backend/absencesAndActivities'
+import { useListAbsences } from '../../../backend/collaborator'
 import { formatDate, getNumOfVacationDays } from '../../../utils/dateUtils'
 
 const defaultPermission =
